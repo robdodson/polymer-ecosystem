@@ -22,5 +22,10 @@
     "geo-location": "ebidel/geo-location#master",
     "google-sheets": "GoogleWebComponents/google-sheets#master",
     "flatiron-director": "PolymerLabs/flatiron-director#master"
+  },
+  "resolutions": {
+    "polymer": "master",
+    "platform": "master",
+    "core-component-page": "master"
   }
 }
