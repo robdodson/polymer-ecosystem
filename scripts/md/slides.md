@@ -683,16 +683,6 @@ content_class: flexbox vcenter
 <!-- declarative is great, but I can declare <tab> on my page and it works
 why is this better
 -->
- 
----
-
-body_class: yes
-class: yes nobackground
-content_class: flexbox vcenter
-
-## YES!
-
-<audio data-src="audio/everythingisawesome_short.ogg"></audio>
 
 ---
 
@@ -1948,19 +1938,6 @@ content_class: flexbox vcenter centered
 <div class="build">
 <h2><a href="http://goo.gl/6dhqUC"><span class="elements">polymer</span><span class="hide">-</span><span class="core">project</span><span class="hide">.</span><span class="platform">org</span></a></h2>
 </div>
-
----
-
-id: buildingblocks
-body_class: legos
-class: nobackground
-content_class: flexbox vcenter
-
-<h2 class="white" style="font-size:60px;line-height:1.2;background: rgba(0, 0, 0, 0.6);padding: 25px;">Create building blocks for the web!!!</h2>
-
-<audio data-src="audio/everythingisawesome_short.ogg"></audio>
-
-<!-- put it all together, get build blocks / create them-->
 
 ---
 

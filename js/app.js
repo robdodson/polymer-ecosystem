@@ -240,25 +240,6 @@ function initDemos() {
   //   slide.$_('#formframe').srcdoc = div.innerHTML;
   // })();
 
-  (function() {
-    var slide = $('#buildingblocks');
-    var audio = slide.$_('audio');
-
-    slide.listen('slideenter', function(e) {
-      audio.load();
-      audio.play();
-    });
-
-    slide.listen('slideleave', function() {
-      audio.pause();
-    });
-
-    // If this slide is current on pageload, start playing video.
-    if (slidedeck.slides[slidedeck.curSlide_] == slide) {
-      audio.play();
-    }
-  })();
-
   // (function() {
   //   var slide = $('#mapstoday');
   //   var code = slide.$_('pre');
