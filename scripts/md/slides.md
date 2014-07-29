@@ -2,43 +2,141 @@ id: who
 title: about:me
 content_class: flexbox vcenter
 
-<!-- <img data-src="https://lh5.googleusercontent.com/-kgFnix5akCc/AAAAAAAAAAI/AAAAAAAAOqk/IVG-V3nJ8jM/s150-c/photo.jpg"> -->
-
 <img data-src="images/me.jpg">
-<h3><a href="http://www.google.com/+EricBidelman">+Eric Bidelman</a></h3>
-<h3><a href="http://twitter.com/ebidel">@ebidel</a></h3>
+<h3><a href="http://www.google.com/+RobDodson">+Rob Dodson</a></h3>
+<h3><a href="http://twitter.com/rob_dodson">@rob_dodson</a></h3>
 
 ---
 
-title: On deck...
+body_class: polymerpurple
 content_class: flexbox vleft
+class: nobackground
 
-<div class="build auto-fadein">
-<h3 style="font-size:60px;"><core-icon icon="label-outline" style="fill:currentcolor" size="40"></core-icon> State of the union</h3>
+<h2 class="slide-heading" style="margin-top: 19%;">Agenda</h2>
+<p class="slide-body">Web Components overview</p>
+<p class="slide-body">The ecosystem</p>
+<p class="slide-body">Join the revolution</p>
 
-<h3 style="font-size:60px;"><core-icon icon="label-outline" style="fill:currentcolor" size="40"></core-icon> Problems solved by web components</h3>
-
-<h3 style="font-size:60px;"><core-icon icon="label-outline" style="fill:currentcolor" size="40"></core-icon> "Thinking in components"</h3>
-
-<!-- <h3><core-icon icon="label-outline" style="fill:currentcolor" size="40"></core-icon> Styling / theming</h3> -->
-
-<!-- <h3><core-icon icon="label-outline" style="fill:currentcolor" size="40"></core-icon> Looking forward</h3> -->
-
-</div>
+<aside class="note">
+  <section>
+    <p>HTML 5 addressed capabilities. But we also needed a powerful developer platform</p>
+  </section>
+</aside>
 
 ---
 
-id: onceuponatime
-body_class: time
+body_class: polymerpurple
+content_class: flexbox vleft
 class: nobackground
+
+<h2 class="slide-heading">Web Components overview</h2>
+
+---
+
 content_class: flexbox vcenter
 
-<h2 class="white">Once upon a time...</h2>
-
-<span class="source right"><a href="http://unsplash.com">unsplash.com</a></span>
+<img src="images/slides/topeka-family-05.png"
+     width="100%" style="margin-top: 4%;">
 
 ---
 
+body_class: polymerpurple
+content_class: flexbox vleft
+class: nobackground
+
+<h2 class="slide-heading" style="margin-bottom: 15px; margin-top: 0;">&lt;h1&gt;</h2>
+<h2 class="slide-heading" style="margin-bottom: 15px; margin-top: 0;">&lt;ul&gt;</h2>
+<h2 class="slide-heading" style="margin-bottom: 15px; margin-top: 0;">&lt;div&gt;</h2>
+
+---
+
+id: tab-examples
+title: Let's create a tab strip!  <label style="text-decoration: line-through;">today</label><label class="blue" style="margin-left:10px">yesterday</label>
+class: nobackground
+
+<div class="build flexbox vcenter centered">
+  <img data-src="images/screenshots/tabs/jquery.png">
+  <img data-src="images/screenshots/tabs/kendo.png">
+  <img data-src="images/screenshots/tabs/yui.png">
+  <img data-src="images/screenshots/tabs/angular.png">
+  <img data-src="images/screenshots/tabs/sencha.png">
+  <img src=""> <!-- intentional. holder to see all images together -->
+</div>
+
+<div style="position:absolute;bottom:20px">
+  <h4><core-icon icon="cancel" class="googlered"></core-icon> No common structure / pattern</h4>
+  <h4><core-icon icon="cancel" class="googlered"></core-icon> APIs are all different</h4>
+  <h4><core-icon icon="cancel" class="googlered"></core-icon> Overloading HTML</h4>
+</div>
+
+<!-- html Renaissance -->
+---
+
+id: tabsexample
+title: Web Components
+subtitle: define new HTML
+
+<div class="sidebyside">
+<div flex> 
+<h4><core-icon icon="check-circle-outline" class="googlegreen"></core-icon> <b>declarative</b>, readable</h4>
+<h4><core-icon icon="check-circle-outline" class="googlegreen"></core-icon> <b>meaningful</b> HTML</h4>
+<!-- <h4><core-icon icon="check-circle-outline" class="googlegreen"></core-icon> <b>per-element</b> APIs: props, methods, events</h4> -->
+<!-- <h4><core-icon icon="check-circle-outline" class="googlegreen"></core-icon> browser <b><a href="https://www.youtube.com/watch?v=_IBiXfxhF-A&list=PLOU2XLYxmsIIwGK7v7jg3gQvIAWJzdat_">accessibility</a></b> features</h4> -->
+<!-- <h4><core-icon icon="check-circle-outline" class="googlegreen"></core-icon> It's <b>DOM</b> &rarr; integrated w/ the browser</h4> -->
+<h4><core-icon icon="check-circle-outline" class="googlegreen"></core-icon> common way to <b>extend</b> &rarr; reusable</h4>
+</div>
+<div flex>
+<code-cycler class="prettyprint nohighlight larger">
+  <textarea>
+    &lt;paper-tabs selected="1"&gt;
+      &lt;paper-tab&gt;Tab 1&lt;/paper-tab&gt;
+      &lt;paper-tab&gt;Tab 2&lt;/paper-tab&gt;
+      &lt;paper-tab&gt;Tab 3&lt;/paper-tab&gt;
+    &lt;/paper-tabs&gt;
+  </textarea>
+  <textarea style="font-size:22px;">
+    var tabs = document.querySelector('paper-tabs');
+    tabs.addEventListener('core-activate', function() {
+      console.log(this.selected);
+    });
+  </textarea>
+</code-cycler>
+</div>
+</div>
+
+<template is="auto-binding">
+<div layout vertical center>
+<paper-tabs id="papertabdemo" selected="1" class="topmargin">
+  <paper-tab>Tab 1</paper-tab>
+  <paper-tab>Tab 2</paper-tab>
+  <paper-tab>Tab 3</paper-tab>
+</paper-tabs>
+<div style="margin-top:30px">.selected = {{$.papertabdemo.selected}}</div>
+<output></output>
+</div>
+</template>
+
+---
+
+id: tabsphone
+body_class: polymerpurple
+class: nobackground
+
+<div class="blurb">
+  <p>Less markup. Less CSS. <strong>Less clutter.</strong></p>
+  <pre class="prettyprint larger">
+&lt;paper-tabs selected="0">
+  &lt;paper-tab>KNOWLEDGE&lt;/paper-tab>
+  &lt;paper-tab>HISTORY&lt;/paper-tab>
+  &lt;paper-tab>FOOD&lt;/paper-tab>
+&lt;/paper-tabs>
+  </pre>
+</div>
+<img src="images/slides/Nexus-5-Black-Flats.png">
+<video data-src="videos/paper-tabs.mp4" loop></video>
+---
+
+hidden: true
 id: platform-grow
 class: nobackground
 <!-- content_class: flexbox vcenter -->
@@ -476,74 +574,6 @@ content_class: flexbox vcenter
 title: HTML didn't keep up
 body_class: readable
 class: nobackground highlight
-
----
-
-id: tab-examples
-title: Let's create a tab strip!  <label style="text-decoration: line-through;">today</label><label class="blue" style="margin-left:10px">yesterday</label>
-
-<div class="build flexbox vcenter centered">
-<img data-src="images/screenshots/tabs/jquery.png">
-<img data-src="images/screenshots/tabs/kendo.png">
-<img data-src="images/screenshots/tabs/yui.png">
-<img data-src="images/screenshots/tabs/angular.png">
-<img data-src="images/screenshots/tabs/sencha.png">
-<img src=""> <!-- intentional. holder to see all images together -->
-</div>
-
-<div style="position:absolute;bottom:40px"> 
-  <h4><core-icon icon="cancel" class="googlered"></core-icon> No common structure / pattern</h4>
-  <h4><core-icon icon="cancel" class="googlered"></core-icon> APIs are all different</h4>
-  <h4><core-icon icon="cancel" class="googlered"></core-icon> Overloading HTML</h4>
-</div>
-
-<!-- html Renaissance -->
----
-
-id: tabsexample
-title: Custom elements <label class="blue">web components</label>
-subtitle: define new HTML
-
-<div class="sidebyside">
-<div flex> 
-<h4><core-icon icon="check-circle-outline" class="googlegreen"></core-icon> <b>declarative</b>, readable</h4>
-<h4><core-icon icon="check-circle-outline" class="googlegreen"></core-icon> <b>meaningful</b> HTML</h4>
-<!-- <h4><core-icon icon="check-circle-outline" class="googlegreen"></core-icon> <b>per-element</b> APIs: props, methods, events</h4> -->
-<!-- <h4><core-icon icon="check-circle-outline" class="googlegreen"></core-icon> browser <b><a href="https://www.youtube.com/watch?v=_IBiXfxhF-A&list=PLOU2XLYxmsIIwGK7v7jg3gQvIAWJzdat_">accessibility</a></b> features</h4> -->
-<!-- <h4><core-icon icon="check-circle-outline" class="googlegreen"></core-icon> It's <b>DOM</b> &rarr; integrated w/ the browser</h4> -->
-<h4><core-icon icon="check-circle-outline" class="googlegreen"></core-icon> common way to <b>extend</b> &rarr; reusable</h4>
-</div>
-<div flex>
-<code-cycler class="prettyprint nohighlight larger">
-  <textarea>
-    &lt;paper-tabs selected="1"&gt;
-      &lt;paper-tab&gt;Tab 1&lt;/paper-tab&gt;
-      &lt;paper-tab&gt;Tab 2&lt;/paper-tab&gt;
-      &lt;paper-tab&gt;Tab 3&lt;/paper-tab&gt;
-    &lt;/paper-tabs&gt;
-  </textarea>
-  <textarea style="font-size:22px;">
-    var tabs = document.querySelector('paper-tabs');
-    tabs.addEventListener('core-activate', function() {
-      console.log(this.selected);
-    });
-  </textarea>
-</code-cycler>
-</div>
-</div>
-
-<template is="auto-binding">
-<div layout vertical center>
-<paper-tabs id="papertabdemo" selected="1" class="topmargin">
-  <paper-tab>Tab 1</paper-tab>
-  <paper-tab>Tab 2</paper-tab>
-  <paper-tab>Tab 3</paper-tab>
-</paper-tabs>
-<div style="margin-top:30px">.selected = {{$.papertabdemo.selected}}</div>
-<output></output>
-</div>
-</template>
-
 
 ---
 

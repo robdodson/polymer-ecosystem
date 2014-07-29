@@ -1,11 +1,11 @@
 var SLIDE_CONFIG = {
   // Slide settings
   settings: {
-    title: 'Polymer & Web Components',
-    subtitle: 'change everything you know about web development',
+    title: 'The Web Component Ecosystem',
+    subtitle: 'A wonderful world of Web Components',
     eventInfo: {
-      title: 'Google I/O 2014',
-      date: 'June 25, 2014'
+      title: 'BrazilJS 2014',
+      date: 'August 22, 2014'
     },
     useBuilds: true, // Default: true. False will turn off slide animation builds.
     usePrettify: false, // Controlled in app.js 
@@ -26,12 +26,12 @@ var SLIDE_CONFIG = {
 
   // Author information
   presenters: [{
-    name: 'Eric Bidelman',
+    name: 'Rob Dodson',
     //company: 'Chrome Team',
-    gplus: 'http://google.com/+EricBidelman',
-    twitter: '@ebidel',
-    www: 'http://ericbidelman.com',
-    github: 'http://github.com/ebidel'
+    gplus: 'http://google.com/+RobDodson',
+    twitter: '@rob_dodson',
+    www: 'http://robdodson.me',
+    github: 'http://github.com/robdodson'
   }]
 };
 

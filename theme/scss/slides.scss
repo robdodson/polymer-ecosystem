@@ -286,6 +286,34 @@ slide#onceuponatime {
   }
 }
 
+slide#tabsphone {
+  img {
+    position: absolute;
+    right: -38px;
+    bottom: -467px;
+    width: 550px;
+  }
+  .blurb {
+    position: absolute;
+    top: 236px;
+  }
+  p {
+    color: white;
+    font-size: 37px;
+    margin-bottom: 0.9em;
+  }
+  pre {
+    height: 252px;
+    width: 626px;
+  }
+  video {
+    position: absolute;
+    right: 26px;
+    bottom: -352px;
+    width: 417px;
+  }
+}
+
 slide#lastyear {
   img {
     border-radius: 3px;
@@ -492,7 +520,7 @@ slide#tab-examples {
     //   margin-left: 200px;
     // }
     &.build-current {
-      @include transform(none);
+      @include transform(scale(0.9));
     }
   }
 }

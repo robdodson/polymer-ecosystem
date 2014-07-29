@@ -231,6 +231,26 @@ function initContent(e) {
 // Inline slide examples -------------------------------------------------------
 
 function initDemos() {
+
+  function setupVideo(slide, video) {
+    video.listen('ended', function(e) {
+      video.play();
+    });
+
+    slide.listen('slideenter', function(e) {
+      video.play();
+    });
+
+    slide.listen('slideleave', function() {
+      video.pause();
+    });
+
+    // If this slide is current on pageload, start playing video.
+    if (slidedeck.slides[slidedeck.curSlide_] == slide) {
+      video.play();
+    }
+  }
+
   // (function() {
   //   var slide = $('#netscape');
 
@@ -610,6 +630,13 @@ function initDemos() {
       output.classList.add('fadeout'); 
       output.innerHTML = '"' + e.type + '"';
     });
+  })();
+
+  (function() {
+    var slide = $('#tabsphone');
+    var video = slide.$_('video');
+
+    setupVideo(slide, video);
   })();
 
 
