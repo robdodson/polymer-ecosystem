@@ -26,6 +26,10 @@ $polymer-gray-darker: rgb(51, 51, 51);
 $slide-left-right-padding: 0;
 $bodyTextColor: rgb(64,64,64);
 
+body {
+  background: white;
+}
+
 .fill {
   .faded {
     color: rgba(255, 255, 255, 0.6);
@@ -157,6 +161,10 @@ slides > slide {
   font-family: 'Roboto2', sans-serif;
   padding: 0 $slide-left-right-padding;
 
+  &.narrow-padding {
+    padding: 0 7%;
+  }
+
   &.segue {
     padding: 0 $slide-left-right-padding * 2;
     color: #fff;
@@ -225,6 +233,11 @@ slides > slide {
   font-size: 37px;
   color: white;
   margin-bottom: 14px;
+}
+
+.big-idea {
+  font-size: 140px;
+  color: white;
 }
 
 // Specific slides

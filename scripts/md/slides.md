@@ -19,7 +19,11 @@ class: nobackground
 
 <aside class="note">
   <section>
-    <p>HTML 5 addressed capabilities. But we also needed a powerful developer platform</p>
+      <p>What are Web Components? Why were they created and what problems do they solve?</p>
+
+      <p>Talk about the ecosystem that is emerging around Web Components. Lots of great developers, many are in this crowd, who are building wonderful things.</p>
+
+      <p>I want to tell you, how you can get involved and help us grow this ecosystem. It's up to us to make this a success. It's a big open source effort</p>
   </section>
 </aside>
 
@@ -31,6 +35,28 @@ class: nobackground
 
 <h2 class="slide-heading">Web Components overview</h2>
 
+<aside class="note">
+  <section>
+    <p>Let's start with a general overview so we're all on the same page</p>
+  </section>
+</aside>
+
+---
+
+body_class: polymerpink
+content_class: flexbox vleft
+class: nobackground
+
+<h2 class="slide-heading">What problems are we solving?</h2>
+
+<aside class="note">
+  <section>
+    <p>I like to start by talking about the problems that Web Components solve</p>
+    <p>What are the issues we, as web developers, face today?</p>
+    <p>And how will Web Components make our lives better</p>
+  </section>
+</aside>
+
 ---
 
 content_class: flexbox vcenter
@@ -38,21 +64,59 @@ content_class: flexbox vcenter
 <img src="images/slides/topeka-family-05.png"
      width="100%" style="margin-top: 4%;">
 
+<aside class="note">
+  <section>
+    <p>This is what building for the web looks like today</p>
+    <p>
+      We've entered this multi-device era where we still have to support
+      laptops and desktops. But also tvs, phones, tablets and wearables.
+    </p>
+    <p>
+      And the things we're building are starting to be more app-like.
+    </p>
+  </section>
+</aside>
+
 ---
 
+id: documentcentric
 body_class: polymerpurple
 content_class: flexbox vleft
 class: nobackground
 
-<h2 class="slide-heading" style="margin-bottom: 15px; margin-top: 0;">&lt;h1&gt;</h2>
-<h2 class="slide-heading" style="margin-bottom: 15px; margin-top: 0;">&lt;ul&gt;</h2>
-<h2 class="slide-heading" style="margin-bottom: 15px; margin-top: 0;">&lt;div&gt;</h2>
+<h2 class="slide-heading">&lt;h1&gt;</h2>
+<h2 class="slide-heading">&lt;ul&gt;</h2>
+<h2 class="slide-heading">&lt;div&gt;</h2>
+
+<aside class="note">
+  <section>
+    <p>These are the tools that we have</p>
+    <p>At times they can feel basic or primitive</p>
+    <p>HTML was designed for documents, doesn't do very many app-like things</p>
+    <p>When we try to build applications, it ends up looking like this [NEXT SLIDE]</p>
+  </section>
+</aside>
+
+---
+
+title: HTML hasn't kept up
+body_class: readable
+class: nobackground highlight
+
+<aside class="note">
+  <section>
+    <p>We end up with div soup</p>
+    <p>This is the code that gmail produces and it's kind of crazy</p>
+    <p>HTML didn't keep up. It didn't allow us to build complex apps as the web evolved</p>
+    <p>So we turn to frameworks and libraries to fill in the gaps in the web platform.</p>
+  </section>
+</aside>
 
 ---
 
 id: tab-examples
-title: Let's create a tab strip!  <label style="text-decoration: line-through;">today</label><label class="blue" style="margin-left:10px">yesterday</label>
-class: nobackground
+title: Let's create a tab strip!
+class: nobackground narrow-padding
 
 <div class="build flexbox vcenter centered">
   <img data-src="images/screenshots/tabs/jquery.png">
@@ -69,52 +133,38 @@ class: nobackground
   <h4><core-icon icon="cancel" class="googlered"></core-icon> Overloading HTML</h4>
 </div>
 
-<!-- html Renaissance -->
+<aside class="note">
+  <section>
+    <p>Even a simple example, like a tab strip, can be unnecessarily complex to build.</p>
+    <p>You can see that every library out there does it differently.</p>
+    <p>Some use a little bit of HTML, some use HTML and JavaScript, and some go the entire JS route</p>
+    <p>And these are all different!</p>
+    <p>As a developer you have to constantly learn new frameworks and libraries just to do even simple things like add some tabs to a page.</p>
+  </section>
+</aside>
+
 ---
 
-id: tabsexample
-title: Web Components
-subtitle: define new HTML
+class: nobackground
+id: platform-grow2
 
-<div class="sidebyside">
-<div flex> 
-<h4><core-icon icon="check-circle-outline" class="googlegreen"></core-icon> <b>declarative</b>, readable</h4>
-<h4><core-icon icon="check-circle-outline" class="googlegreen"></core-icon> <b>meaningful</b> HTML</h4>
-<!-- <h4><core-icon icon="check-circle-outline" class="googlegreen"></core-icon> <b>per-element</b> APIs: props, methods, events</h4> -->
-<!-- <h4><core-icon icon="check-circle-outline" class="googlegreen"></core-icon> browser <b><a href="https://www.youtube.com/watch?v=_IBiXfxhF-A&list=PLOU2XLYxmsIIwGK7v7jg3gQvIAWJzdat_">accessibility</a></b> features</h4> -->
-<!-- <h4><core-icon icon="check-circle-outline" class="googlegreen"></core-icon> It's <b>DOM</b> &rarr; integrated w/ the browser</h4> -->
-<h4><core-icon icon="check-circle-outline" class="googlegreen"></core-icon> common way to <b>extend</b> &rarr; reusable</h4>
-</div>
-<div flex>
-<code-cycler class="prettyprint nohighlight larger">
-  <textarea>
-    &lt;paper-tabs selected="1"&gt;
-      &lt;paper-tab&gt;Tab 1&lt;/paper-tab&gt;
-      &lt;paper-tab&gt;Tab 2&lt;/paper-tab&gt;
-      &lt;paper-tab&gt;Tab 3&lt;/paper-tab&gt;
-    &lt;/paper-tabs&gt;
-  </textarea>
-  <textarea style="font-size:22px;">
-    var tabs = document.querySelector('paper-tabs');
-    tabs.addEventListener('core-activate', function() {
-      console.log(this.selected);
-    });
-  </textarea>
-</code-cycler>
-</div>
+<div class="build auto-fadein">
+  <img data-src="images/logos/HTML5_Logo.svg">
+  <img data-src="images/logos/html5logo_no5.svg">
+  <img data-src="images/logos/webcomponents_new.svg">
+  <img data-src="images/logos/webcomponents_new.svg">
 </div>
 
-<template is="auto-binding">
-<div layout vertical center>
-<paper-tabs id="papertabdemo" selected="1" class="topmargin">
-  <paper-tab>Tab 1</paper-tab>
-  <paper-tab>Tab 2</paper-tab>
-  <paper-tab>Tab 3</paper-tab>
-</paper-tabs>
-<div style="margin-top:30px">.selected = {{$.papertabdemo.selected}}</div>
-<output></output>
-</div>
-</template>
+<aside class="note">
+  <section>
+    <p>Members of the Chrome team looked at the things developers needed</p>
+    <p>templating, scoping, encapsulation</p>
+    <p>Let's take our web platform, and strip it back. Let's identify the core APIs we need.</p>
+    <p>This is where the different specifications for Web Components come from</p>
+    <p>We have 4 specifications which make up Web Components. Each can be used standalone but when you combine them it gives developers the ability to do some really amazing things. That's what Polymer does.</p>
+    <p>All standards based</p>
+  </section>
+</aside>
 
 ---
 
@@ -134,6 +184,16 @@ class: nobackground
 </div>
 <img src="images/slides/Nexus-5-Black-Flats.png">
 <video data-src="videos/paper-tabs.mp4" loop></video>
+
+<aside class="note">
+  <section>
+    <p>And so here's an example of tabs revisited, using web components</p>
+    <p>It's cleaner, easier to understand</p>
+    <p>And since it's all standards based you can use it in any project</p>
+    <p>We'll come back to this example later, but let's look at what the current support for web components looks like</p>
+  </section>
+</aside>
+
 ---
 
 hidden: true
@@ -154,6 +214,7 @@ class: nobackground
 
 ---
 
+hidden: true
 body_class: googlered
 content_class: flexbox vcenter
 
@@ -167,6 +228,7 @@ content_class: flexbox vcenter
 
 ---
 
+hidden: true
 body_class: road
 class: nobackground
 content_class: flexbox vcenter
@@ -177,6 +239,7 @@ content_class: flexbox vcenter
 
 ---
 
+hidden: true
 title: Start of a very looonnng journey
 content_class: flexbox vcenter
 class: screenshot nobackground
@@ -191,18 +254,7 @@ class: screenshot nobackground
 
 ---
 
-class: nobackground
-id: platform-grow2
-
-<div class="build auto-fadein">
-  <img data-src="images/logos/HTML5_Logo.svg">
-  <img data-src="images/logos/html5logo_no5.svg">
-  <img data-src="images/logos/webcomponents_new.svg">
-  <img data-src="images/logos/webcomponents_new.svg">
-</div>
-
----
-
+hidden: true
 id: lastyear
 body_class: lastyear
 title: Google I/O 2013
@@ -214,7 +266,7 @@ class: nobackground highlight left top
 ---
 
 title: W3C standards <label class="blue">2013</label>
-class: browser-support
+class: browser-support narrow-padding
 
 <div class="flexbox">
   <h3>Templates</h3>
@@ -260,11 +312,17 @@ class: browser-support
   </div>
 </div>
 
+<aside class="note">
+  <section>
+    <p></p>
+  </section>
+</aside>
+
 ---
 
 id: platform-polyfills
 title: W3C standards <label class="blue">2014</label>
-class: browser-support
+class: browser-support narrow-padding
 
 <div class="flexbox">
   <h3>Templates</h3>
@@ -379,7 +437,7 @@ class: large nobackground do-transition
 id: hope
 title: Hope!
 content_class: flexbox vcenter
-class: screenshot nobackground
+class: screenshot nobackground narrow-padding
 
 <a href="http://status.modern.ie/">
   <img data-src="images/slides/status.modern.ie.png" class="full">
@@ -391,117 +449,15 @@ class: screenshot nobackground
 
 ---
 
-title: People <em>built</em> stuff.
-body_class: googlered
-class: segue faded
+body_class: polymerpink
+content_class: flexbox vleft
+class: nobackground
 
----
-
-title: polymer-project.org<br><br>chromestatus.com
-class: screenshot highlight bottom left nobackground
-
-<a href="http://goo.gl/6dhqUC">
-  <img data-src="images/slides/pp.org.png" style="width:70%;height:auto;position:absolute;top:0;left:0">
-</a>
-
-<a href="http://chromestatus.com">
-  <img data-src="images/slides/chromestatus.png" style="width:55%;height:auto;position: absolute;bottom:0;right:0">
-</a>
+<h2 class="slide-heading">How do they work?</h2>
 
 ---
 
 hidden: true
-hidden_later: true
-title: Chrome Feature Dashboard
-subtitle: chromestatus.com
-class: screenshot highlight bottom right nobackground
-
-<a href="http://chromestatus.com">
-  <img data-src="images/slides/chromestatus.png" class="full">
-</a>
-
----
-
-title: WinJS + Polymer experiments!
-content_class: flexbox vcenter
-class: screenshot highlight bottom right nobackground
-
-<a href="https://github.com/banguero/winjs-polymer-samples">
-  <img data-src="images/slides/winjs.png" class="full">
-</a>
-
-<span class="source">
-  <a href="https://github.com/banguero/winjs-polymer-samples">github.com/banguero/winjs-polymer-samples</a>
-</span>
-
----
-
-title: Github.com
-class: highlight nobackground
-content_class: flexbox vcenter
-
-<a href="https://twitter.com/ebidel/status/464102546114506752">
-  <img data-src="images/slides/github2.png" class="full">
-</a>
-
----
-
-hidden: true
-title: Bower Metrics Dashboard
-subtitle: polymerlabs.github.io/bower-metrics-dashboard
-class: screenshot highlight bottom left nobackground
-
-<a href="http://polymerlabs.github.io/bower-metrics-dashboard/">
-  <img data-src="images/slides/bowerdash.png" class="full">
-</a>
-
----
-
-title: Chrome OS Keyboard
-class: highlight top right nobackground fullviewport
-
-<a href="https://code.google.com/p/chromium/codesearch#chromium/src/ui/keyboard/resources/elements/&q=polymer%20keyboard&sq=package:chromium&type=cs">
-  <img data-src="images/slides/cros-keyboard.png" class="fullviewport" style="object-fit: cover;object-position: 50% 100%;position:absolute">
-</a>
-
----
-
-title: Chrome OS Media Player
-class: highlight top left nobackground fullviewport
-
-<a href="https://code.google.com/p/chromium/codesearch#chromium/src/ui/file_manager/file_manager/audio_player.html&sq=package:chromium&type=cs">
-  <img data-src="images/slides/cros_audio_player.png" class="fullviewport" style="object-fit: cover;object-position: 50% 100%;position:absolute">
-</a>
-
----
-
-body_class: problem 
-class: nobackground fill
-content_class: flexbox vstart
-
-<h2 class="faded centered" style="font-size:100px;margin-top:75px;">What <em>problems</em> do web components <em>solve</em>?</h2>
-
-<span class="source right"><a href="http://unsplash.com">unsplash.com</a></span>
-
-
----
-
-hidden: true
-id: standards-bottom
-image: images/slides/standardsonbottom.png
-#body_class: platform-bg
-class: nobackground cubespin do-transition
-content_class: flexbox vcenter
-
-<aside class="note">
-  <section>
-    <p>A bet on the future web platform</p>
-    <p>We needed new standards-based APIs to describe the platform and give frameworks and developers common ways to built stuff</p>
-  </section>
-</aside>
-
----
-
 body_class: googlegray
 class: large faded bce
 content_class: flexbox vcenter
@@ -510,34 +466,6 @@ content_class: flexbox vcenter
 <h2 class="faded"><em>B</em><span>efore</span></h2>
 <h2 class="faded"><em>C</em><span>omponents</span></h2>
 <h2 class="faded"><em>E</em><span>xisted</span></h2>
-</div>
-
-<!--
-- We learned about building apps
-- There's a before and after event
-- some tools/libs need to be updated to work in this brave new world
-- solutions and productivity outweigh the costs
-
-bce, there was darkness
--->
-
-
-<!--
-  avoid explaining each API in great detail. instead focus on what each API solves
--->
-
----
-
-hidden: true
-class: nobackground twopanel
-
-<div class="build" layout horizontal center>
-<h2 class="white" flex layout vertical center center-justified>Problems
-  <core-icon icon="thumb-down" style="fill:currentcolor" size="150"></core-icon>
-</h2>
-<h2 class="white" flex layout vertical center center-justified>Solved
-  <core-icon icon="thumb-up" style="fill:currentcolor" size="150"></core-icon>
-  </h2>
 </div>
 
 ---
@@ -552,13 +480,15 @@ class: screenshot nobackground do-transition
 
 <img data-src="images/slides/pp.org-highlight-components.png" class="full">
 
----
-
-hidden: true
-hidden_later: true
-class: screenshot nobackground
-
-<img data-src="images/slides/chromestatus-highlight-components.png" class="full">
+<aside class="note">
+  <section>
+    <p>Top nav app-bar, expands to show search. Responsible</p>
+    <p>Center of content is actually a component too. Scrolls and collapses</p>
+    <p>It adds its own event listeners, it handles its behaviors. It's baked in</p>
+    <p>Side navigation. It's own component. Reusable.</p>
+    <p>All are Custom Elements</p>
+  </section>
+</aside>
 
 ---
 
@@ -569,11 +499,57 @@ content_class: flexbox vcenter
 <h2>custom elements</h2>
 <h3 class="white">define new HTML/DOM elements</h3>
 
+<aside class="note">
+  <section>
+    <p></p>
+  </section>
+</aside>
+
 ---
 
-title: HTML didn't keep up
-body_class: readable
-class: nobackground highlight
+id: tabsexample
+title: Web Components
+subtitle: define new HTML
+
+<div class="sidebyside">
+<div flex> 
+<h4><core-icon icon="check-circle-outline" class="googlegreen"></core-icon> <b>declarative</b>, readable</h4>
+<h4><core-icon icon="check-circle-outline" class="googlegreen"></core-icon> <b>meaningful</b> HTML</h4>
+<!-- <h4><core-icon icon="check-circle-outline" class="googlegreen"></core-icon> <b>per-element</b> APIs: props, methods, events</h4> -->
+<!-- <h4><core-icon icon="check-circle-outline" class="googlegreen"></core-icon> browser <b><a href="https://www.youtube.com/watch?v=_IBiXfxhF-A&list=PLOU2XLYxmsIIwGK7v7jg3gQvIAWJzdat_">accessibility</a></b> features</h4> -->
+<!-- <h4><core-icon icon="check-circle-outline" class="googlegreen"></core-icon> It's <b>DOM</b> &rarr; integrated w/ the browser</h4> -->
+<h4><core-icon icon="check-circle-outline" class="googlegreen"></core-icon> common way to <b>extend</b> &rarr; reusable</h4>
+</div>
+<div flex>
+<code-cycler class="prettyprint nohighlight larger">
+  <textarea>
+    &lt;paper-tabs selected="1"&gt;
+      &lt;paper-tab&gt;Tab 1&lt;/paper-tab&gt;
+      &lt;paper-tab&gt;Tab 2&lt;/paper-tab&gt;
+      &lt;paper-tab&gt;Tab 3&lt;/paper-tab&gt;
+    &lt;/paper-tabs&gt;
+  </textarea>
+  <textarea style="font-size:22px;">
+    var tabs = document.querySelector('paper-tabs');
+    tabs.addEventListener('core-activate', function() {
+      console.log(this.selected);
+    });
+  </textarea>
+</code-cycler>
+</div>
+</div>
+
+<template is="auto-binding">
+<div layout vertical center>
+<paper-tabs id="papertabdemo" selected="1" class="topmargin">
+  <paper-tab>Tab 1</paper-tab>
+  <paper-tab>Tab 2</paper-tab>
+  <paper-tab>Tab 3</paper-tab>
+</paper-tabs>
+<div style="margin-top:30px">.selected = {{$.papertabdemo.selected}}</div>
+<output></output>
+</div>
+</template>
 
 ---
 
@@ -705,6 +681,7 @@ content_class: flexbox vcenter
 
 ---
 
+hidden: true
 body_class: googlegray
 content_class: flexbox vcenter
 
@@ -1246,68 +1223,35 @@ content_class: flexbox vcenter
 
 ---
 
-body_class: thinker
+body_class: polymerpink
+content_class: flexbox vleft
+class: nobackground
+
+<h2 class="slide-heading">Recap</h2>
+
+---
+
+body_class: polymerpurple
+content_class: flexbox vleft
+class: nobackground
+
+<h2 class="slide-heading">The ecosystem</h2>
+
+---
+
+body_class: polymerpink
+content_class: flexbox vleft
+class: nobackground
+
+<h2 class="slide-heading">Elements</h2>
+
+---
+
+body_class: girders
 class: nobackground
 content_class: flexbox vcenter
 
-<h2 class="white" style="font-size:90px;">"Thinking in components"</h2>
-
-<span class="source right"><a href="http://www.flickr.com/photos/stevenfettig/1390275600/in/photostream/">flickr.com/photos/stevenfettig/1390275600/in/photostream/</a></span>
-
----
- 
-body_class: googlegray
-content_class: flexbox vcenter
-
-<h2 class="rethink">How we use HTML</h2>
-
----
-
-id: element-types
-title: Types of HTML elements
-#build_lists: true
-
-<div class="flexbox build">
-  <div class="flexbox">
-    <h4 class="bold"><span class="blue">Visual elements</span>  - render UI to the screen</h4>
-
-    <input type="text" placeholder='<input type="text">'>
-
-    <select>
-      <option>&lt;select></option>
-    </select>
-
-    <progress value="25" max="100"></progress>
-
-    <textarea>&lt;textarea></textarea>
-
-    <button>Click me</button>
-
-    <audio controls></audio>
-
-    <details>
-     <div>&lt;details></div>
-    </details>
-
-  </div>
-  <div>
-    <h4 class="bold"><span class="blue">Non-visual elements</span>  - provide utility</h4>
-    <ul>
-    <li><code>&lt;head&gt;</code></li>
-    <li><code>&lt;title&gt;</code></li>
-    <li><code>&lt;meta&gt;</code></li>
-    <li><code>&lt;link&gt;</code></li>
-    <li><code>&lt;style&gt;</code></li>
-    <li><code>&lt;script&gt;</code></li>
-    <li><code>&lt;template&gt;</code></li>
-    <li><code>&lt;datalist&gt;</code></li>
-    <li><code>&lt;source&gt;</code></li>
-    ...
-    </ul>
-  </div>
-</div>
-
-<span class="source"><a href="https://code.google.com/p/chromium/codesearch#chromium/src/third_party/WebKit/Source/core/css/html.css&sq=package:chromium&type=cs&l=31">examples</a></span>
+<h1 class="big-idea">core-elements</h1>
 
 ---
 
@@ -1345,86 +1289,172 @@ title: Polymer's core elements
 
 ---
 
-id: paperexamples
-title: Polymer's material design elements
-subtitle: highly visual &amp; interactive
 class: nobackground
 
-<div horizontal layout>
-<div flex>
-
-  <div>
-    <paper-tabs selected="0">
-    <paper-tab>paper-tab 1</paper-tab>
-    <paper-tab>paper-tab 2</paper-tab>
-    <paper-tab>paper-tab 3</paper-tab>
-   </paper-tabs>
-  </div>
-
-  <div>
-    <paper-button label="paper-button"></paper-button>
-    <paper-button label="raised button" raisedButton></paper-button>
-  </div>
-
-  <p layout horizontal center>
-    <paper-toggle-button checked style="margin-right:2em;"></paper-toggle-button>
-    <paper-checkbox label="Check me"></paper-checkbox>
-  </p>
-
-  <div layout horizontal center>
-    <paper-radio-group selected="2" style="margin-right:2em;">
-      <paper-radio-button label="Yes"></paper-radio-button>
-      <paper-radio-button label="No"></paper-radio-button>
-    </paper-radio-group>
-    <paper-fab focused icon="cloud-upload"></paper-fab>
-  </div>
-
-  <div layout horizontal center>
-    <p style="margin-right:2em;">
-      <paper-progress value="800" min="100" max="1000"></paper-progress><br>
-      <paper-progress class="pink" value="40" secondaryProgress="80"></paper-progress>
-    </p>
-    <paper-slider pin max="10" step="1" value="5"></paper-slider>
-  </div>
-
-  <paper-button label="Toggle batman" style="font-size:20px;" raisedButton
-    onclick="document.querySelector('#paperexamples').classList.toggle('on');"></paper-button>
-
-</div>
-<div flex>
-
-  <div layout horizontal center>
-    <core-toolbar layout horizontal center>
-      <paper-icon-button icon="menu"></paper-icon-button>
-      <span flex style="font-size:25px;">core-toolbar</span>
-      <paper-icon-button icon="refresh"></paper-icon-button>
-      <paper-icon-button icon="add"></paper-icon-button>
-      <paper-icon-button icon="search"></paper-icon-button>
-      <paper-icon-button icon="cloud-upload"></paper-icon-button>
-    </core-toolbar>
-  </div>
-
-  <div layout horizontal center>
-    <template is="auto-binding">
-      <div id="shadowdemo" class="card">
-        <paper-ripple></paper-ripple>
-        <paper-shadow target="{{$.shadowdemo}}" z="{{z}}" animated></paper-shadow>
-      </div>
-      <div id="shadowdemo2" class="card">
-        <paper-ripple></paper-ripple>
-        <paper-shadow target="{{$.shadowdemo2}}" z="1"></paper-shadow>
-      </div>
-    </template>
-  </div>
-
-  <div layout horizontal center>
-    <paper-input floatingLabel label="Type numbers..." validate="^[0-9]*$" error="Input is not a number!"></paper-input>
-  </div>
-</div>
-</div>
+<img src="images/screenshots/core-toolbar.jpg" width="100%">
 
 ---
- 
+
+class: nobackground
+
+<img src="images/screenshots/core-header-panel.jpg" width="100%" style="margin-top: -50px;">
+
+---
+
+<h2>core-scroll-header-panel</h2>
+
+---
+
+<h2>core-drawer-panel</h2>
+
+---
+
+<h2>Paper elements</h2>
+
+---
+
+<h2>paper controls</h2>
+
+---
+
+<h2>paper effects</h2>
+
+---
+
+<h2>Mozilla Brick</h2>
+
+---
+
+<h2>Community</h2>
+
+---
+
+<h2>twbs-grid</h2>
+
+---
+
+<h2>ajax-form</h2>
+
+---
+
+<h2>page-er</h2>
+
+---
+
+<h2>x-meme</h2>
+
+---
+
+<h2>app-router</h2>
+
+---
+
+body_class: polymerpink
+content_class: flexbox vleft
+class: nobackground
+
+<h2 class="slide-heading">Apps</h2>
+
+---
+
+title: polymer-project.org<br><br>chromestatus.com
+class: screenshot highlight bottom left nobackground
+
+<a href="http://goo.gl/6dhqUC">
+  <img data-src="images/slides/pp.org.png" style="width:70%;height:auto;position:absolute;top:0;left:0">
+</a>
+
+<a href="http://chromestatus.com">
+  <img data-src="images/slides/chromestatus.png" style="width:55%;height:auto;position: absolute;bottom:0;right:0">
+</a>
+
+---
+
+hidden: true
+hidden_later: true
+title: Chrome Feature Dashboard
+subtitle: chromestatus.com
+class: screenshot highlight bottom right nobackground
+
+<a href="http://chromestatus.com">
+  <img data-src="images/slides/chromestatus.png" class="full">
+</a>
+
+---
+
+<h2>Topeka</h2>
+
+---
+
+<h2>Designer</h2>
+
+---
+
+title: WinJS + Polymer experiments!
+content_class: flexbox vcenter
+class: screenshot highlight bottom right nobackground
+
+<a href="https://github.com/banguero/winjs-polymer-samples">
+  <img data-src="images/slides/winjs.png" class="full">
+</a>
+
+<span class="source">
+  <a href="https://github.com/banguero/winjs-polymer-samples">github.com/banguero/winjs-polymer-samples</a>
+</span>
+
+---
+
+title: Github.com
+class: highlight nobackground
+content_class: flexbox vcenter
+
+<a href="https://twitter.com/ebidel/status/464102546114506752">
+  <img data-src="images/slides/github2.png" class="full">
+</a>
+
+---
+
+hidden: true
+title: Bower Metrics Dashboard
+subtitle: polymerlabs.github.io/bower-metrics-dashboard
+class: screenshot highlight bottom left nobackground
+
+<a href="http://polymerlabs.github.io/bower-metrics-dashboard/">
+  <img data-src="images/slides/bowerdash.png" class="full">
+</a>
+
+---
+
+title: Chrome OS Keyboard
+class: highlight top right nobackground fullviewport
+
+<a href="https://code.google.com/p/chromium/codesearch#chromium/src/ui/keyboard/resources/elements/&q=polymer%20keyboard&sq=package:chromium&type=cs">
+  <img data-src="images/slides/cros-keyboard.png" class="fullviewport" style="object-fit: cover;object-position: 50% 100%;position:absolute">
+</a>
+
+---
+
+title: Chrome OS Media Player
+class: highlight top left nobackground fullviewport
+
+<a href="https://code.google.com/p/chromium/codesearch#chromium/src/ui/file_manager/file_manager/audio_player.html&sq=package:chromium&type=cs">
+  <img data-src="images/slides/cros_audio_player.png" class="fullviewport" style="object-fit: cover;object-position: 50% 100%;position:absolute">
+</a>
+
+---
+
+<h2>Ele.io</h2>
+
+---
+
+body_class: polymerpink
+content_class: flexbox vleft
+class: nobackground
+
+<h2 class="slide-heading">Services (as elements)</h2>
+
+---
+
 body_class: googlegray
 content_class: flexbox vcenter
 
@@ -1595,6 +1625,173 @@ class: screenshot highlight bottom right nobackground
 <a href="http://googlewebcomponents.github.io">
   <img data-src="images/slides/gck.png" class="full">
 </a>
+
+---
+
+<h2>Salesforce + designer video</h2>
+
+---
+
+hidden: true
+id: standards-bottom
+image: images/slides/standardsonbottom.png
+#body_class: platform-bg
+class: nobackground cubespin do-transition
+content_class: flexbox vcenter
+
+<aside class="note">
+  <section>
+    <p>A bet on the future web platform</p>
+    <p>We needed new standards-based APIs to describe the platform and give frameworks and developers common ways to built stuff</p>
+  </section>
+</aside>
+
+---
+
+hidden: true
+body_class: thinker
+class: nobackground
+content_class: flexbox vcenter
+
+<h2 class="white" style="font-size:90px;">"Thinking in components"</h2>
+
+<span class="source right"><a href="http://www.flickr.com/photos/stevenfettig/1390275600/in/photostream/">flickr.com/photos/stevenfettig/1390275600/in/photostream/</a></span>
+
+---
+
+hidden: true
+body_class: googlegray
+content_class: flexbox vcenter
+
+<h2 class="rethink">How we use HTML</h2>
+
+---
+
+hidden: true
+id: element-types
+title: Types of HTML elements
+#build_lists: true
+
+<div class="flexbox build">
+  <div class="flexbox">
+    <h4 class="bold"><span class="blue">Visual elements</span>  - render UI to the screen</h4>
+
+    <input type="text" placeholder='<input type="text">'>
+
+    <select>
+      <option>&lt;select></option>
+    </select>
+
+    <progress value="25" max="100"></progress>
+
+    <textarea>&lt;textarea></textarea>
+
+    <button>Click me</button>
+
+    <audio controls></audio>
+
+    <details>
+     <div>&lt;details></div>
+    </details>
+
+  </div>
+  <div>
+    <h4 class="bold"><span class="blue">Non-visual elements</span>  - provide utility</h4>
+    <ul>
+    <li><code>&lt;head&gt;</code></li>
+    <li><code>&lt;title&gt;</code></li>
+    <li><code>&lt;meta&gt;</code></li>
+    <li><code>&lt;link&gt;</code></li>
+    <li><code>&lt;style&gt;</code></li>
+    <li><code>&lt;script&gt;</code></li>
+    <li><code>&lt;template&gt;</code></li>
+    <li><code>&lt;datalist&gt;</code></li>
+    <li><code>&lt;source&gt;</code></li>
+    ...
+    </ul>
+  </div>
+</div>
+
+---
+
+hidden: true
+id: paperexamples
+title: Polymer's material design elements
+subtitle: highly visual &amp; interactive
+class: nobackground
+
+<div horizontal layout>
+<div flex>
+
+  <div>
+    <paper-tabs selected="0">
+    <paper-tab>paper-tab 1</paper-tab>
+    <paper-tab>paper-tab 2</paper-tab>
+    <paper-tab>paper-tab 3</paper-tab>
+   </paper-tabs>
+  </div>
+
+  <div>
+    <paper-button label="paper-button"></paper-button>
+    <paper-button label="raised button" raisedButton></paper-button>
+  </div>
+
+  <p layout horizontal center>
+    <paper-toggle-button checked style="margin-right:2em;"></paper-toggle-button>
+    <paper-checkbox label="Check me"></paper-checkbox>
+  </p>
+
+  <div layout horizontal center>
+    <paper-radio-group selected="2" style="margin-right:2em;">
+      <paper-radio-button label="Yes"></paper-radio-button>
+      <paper-radio-button label="No"></paper-radio-button>
+    </paper-radio-group>
+    <paper-fab focused icon="cloud-upload"></paper-fab>
+  </div>
+
+  <div layout horizontal center>
+    <p style="margin-right:2em;">
+      <paper-progress value="800" min="100" max="1000"></paper-progress><br>
+      <paper-progress class="pink" value="40" secondaryProgress="80"></paper-progress>
+    </p>
+    <paper-slider pin max="10" step="1" value="5"></paper-slider>
+  </div>
+
+  <paper-button label="Toggle batman" style="font-size:20px;" raisedButton
+    onclick="document.querySelector('#paperexamples').classList.toggle('on');"></paper-button>
+
+</div>
+<div flex>
+
+  <div layout horizontal center>
+    <core-toolbar layout horizontal center>
+      <paper-icon-button icon="menu"></paper-icon-button>
+      <span flex style="font-size:25px;">core-toolbar</span>
+      <paper-icon-button icon="refresh"></paper-icon-button>
+      <paper-icon-button icon="add"></paper-icon-button>
+      <paper-icon-button icon="search"></paper-icon-button>
+      <paper-icon-button icon="cloud-upload"></paper-icon-button>
+    </core-toolbar>
+  </div>
+
+  <div layout horizontal center>
+    <template is="auto-binding">
+      <div id="shadowdemo" class="card">
+        <paper-ripple></paper-ripple>
+        <paper-shadow target="{{$.shadowdemo}}" z="{{z}}" animated></paper-shadow>
+      </div>
+      <div id="shadowdemo2" class="card">
+        <paper-ripple></paper-ripple>
+        <paper-shadow target="{{$.shadowdemo2}}" z="1"></paper-shadow>
+      </div>
+    </template>
+  </div>
+
+  <div layout horizontal center>
+    <paper-input floatingLabel label="Type numbers..." validate="^[0-9]*$" error="Input is not a number!"></paper-input>
+  </div>
+</div>
+</div>
 
 ---
 
@@ -1839,12 +2036,14 @@ paper-button /deep/ #icon {
 
 ---
 
+hidden: true
 title: Do we <em>need web components?</em>
 body_class: googleblue
 class: segue faded
 
 ---
 
+hidden: true
 body_class: yes
 class: yes nobackground
 content_class: flexbox vcenter
@@ -1910,6 +2109,53 @@ title: Web components bring much to the table
 
 ---
 
+body_class: polymerpink
+content_class: flexbox vleft
+class: nobackground
+
+<h2 class="slide-heading">Recap</h2>
+
+---
+
+body_class: polymerpurple
+content_class: flexbox vleft
+class: nobackground
+
+<h2 class="slide-heading">Join the revolution</h2>
+
+---
+
+hidden: true
+
+<h2>webcomponents.org/</h2>
+
+---
+
+<h2>polymer-project.org</h2>
+
+---
+
+<h2>yo polymer!</h2>
+
+---
+
+<h2>seed-element</h2>
+
+---
+
+<h2>F.I.R.S.T.</h2>
+
+---
+
+<h2>Sublime and Atom Snippets</h2>
+
+---
+
+<h2>Codelabs</h2>
+
+---
+
+hidden: true
 body_class: zen
 class: nobackground
 content_class: flexbox vcenter quote
@@ -1922,6 +2168,7 @@ content_class: flexbox vcenter quote
 
 ---
 
+hidden: true
 class: nobackground large
 content_class: flexbox vcenter
 
@@ -1943,6 +2190,7 @@ content_class: flexbox vcenter
 
 ---
 
+hidden: true
 body_class: htmlascustomelesgithub
 class: nobackground
 content_class: flexbox vleft
@@ -1971,6 +2219,7 @@ content_class: flexbox vcenter centered
 
 ---
 
+hidden: true
 body_class: train
 class: nobackground
 content_class: flexbox vcenter

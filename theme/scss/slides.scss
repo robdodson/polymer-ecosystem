@@ -183,6 +183,14 @@ body {
     background-blend-mode: multiply;
     background-size: contain;
   }
+
+  &.girders {
+    background: url('../../images/bgs/bw-girders.jpg') no-repeat 0 0;
+    background-size: cover;
+    background-color: rgba(0,0,0,0.5);
+    background-blend-mode: multiply;
+  }
+
   // &.trex {
   //   background: url('../../images/bgs/trex_guns.jpg') no-repeat 100% 50%;
   //   background-color: black;
@@ -283,6 +291,14 @@ slide#onceuponatime {
     margin-right: 225px;
     line-height: 1.1;
     text-shadow: 1px 1px 3px #777;
+  }
+}
+
+slide#documentcentric {
+  .slide-heading {
+    margin-bottom: 15px;
+    margin-top: 0;
+    font-family: 'Inconsolata';
   }
 }
 
@@ -408,7 +424,7 @@ slide#platform-grow2 {
       height: 478px;
       top: 68px;
       width: auto;
-      left: 43%;
+      left: 44%;
       @include transform(rotateZ(15deg));
     }
     &:nth-child(4) {
@@ -442,9 +458,6 @@ slide#sd-removal {
   &:active {
     hgroup, .source {
       opacity: 0;
-    }
-    img {
-      transform: scale3d(4, 4, 4) translate3d(300px, 110px, 0);
     }
   }
 }

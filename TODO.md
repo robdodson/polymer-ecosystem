@@ -1,4 +1,9 @@
-- Add missing fonts (Roboto, Roboto Condensed?)
+~25min Overview
+~20min Ecosystem
+~5min Join the revolution
+
+
+- Add missing fonts (Roboto, Roboto Condensed, Inconsolata)
 - Add slide notes fix
 - Remove I/O logo
 - Update google analytics and feed into GDG info
